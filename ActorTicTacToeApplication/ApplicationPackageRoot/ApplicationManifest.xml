@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="ActorTicTacToeApplicationType" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+  <Parameters>
+    <Parameter Name="PlayerActorService_PartitionCount" DefaultValue="10" />
+    <Parameter Name="GameActorService_PartitionCount" DefaultValue="10" />
+    <Parameter Name="GameActorService_MinReplicaSetSize" DefaultValue="2" />
+    <Parameter Name="GameActorService_TargetReplicaSetSize" DefaultValue="3" />
+    <Parameter Name="PlayerActorService_MinReplicaSetSize" DefaultValue="1" />
+    <Parameter Name="PlayerActorService_TargetReplicaSetSize" DefaultValue="1" />
+  </Parameters>
+  <ServiceManifestImport>
+    <ServiceManifestRef ServiceManifestName="PlayerPkg" ServiceManifestVersion="1.0.0" />
+  </ServiceManifestImport>
+  <ServiceManifestImport>
+    <ServiceManifestRef ServiceManifestName="GamePkg" ServiceManifestVersion="1.0.0" />
+  </ServiceManifestImport>
+  <DefaultServices>
+    <Service Name="PlayerActorService" GeneratedIdRef="4bb254f4-5fc3-40af-87d3-09d32d264085|None">
+      <StatefulService ServiceTypeName="PlayerActorServiceType" TargetReplicaSetSize="[PlayerActorService_TargetReplicaSetSize]" MinReplicaSetSize="[PlayerActorService_MinReplicaSetSize]">
+        <UniformInt64Partition PartitionCount="[PlayerActorService_PartitionCount]" LowKey="-9223372036854775808" HighKey="9223372036854775807" />
+      </StatefulService>
+    </Service>
+    <Service Name="GameActorService" GeneratedIdRef="97b6db4d-711e-4d50-98cd-9bf5c294056b|Persisted">
+      <StatefulService ServiceTypeName="GameActorServiceType" TargetReplicaSetSize="[GameActorService_TargetReplicaSetSize]" MinReplicaSetSize="[GameActorService_MinReplicaSetSize]">
+        <UniformInt64Partition PartitionCount="[GameActorService_PartitionCount]" LowKey="-9223372036854775808" HighKey="9223372036854775807" />
+      </StatefulService>
+    </Service>
+  </DefaultServices>
+</ApplicationManifest>
