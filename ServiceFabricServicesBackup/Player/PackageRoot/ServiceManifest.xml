@@ -6,11 +6,11 @@
         <Extension Name="__GeneratedServiceType__" GeneratedId="4bb254f4-5fc3-40af-87d3-09d32d264085|None">
           <GeneratedNames xmlns="http://schemas.microsoft.com/2015/03/fabact-no-schema">
             <DefaultService Name="PlayerActorService" />
+            <ServiceEndpoint Name="PlayerActorServiceEndpoint" />
             <ReplicatorEndpoint Name="PlayerActorServiceReplicatorEndpoint" />
             <ReplicatorConfigSection Name="PlayerActorServiceReplicatorConfig" />
             <ReplicatorSecurityConfigSection Name="PlayerActorServiceReplicatorSecurityConfig" />
             <StoreConfigSection Name="PlayerActorServiceLocalStoreConfig" />
-            <ServiceEndpoint Name="PlayerActorServiceEndpoint" />
           </GeneratedNames>
         </Extension>
       </Extensions>
